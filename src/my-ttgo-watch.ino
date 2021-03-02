@@ -51,7 +51,7 @@
 #include "app/fx_rates/fx_rates.h"
 #include "app/powermeter/powermeter_app.h"
 #include "app/FindPhone/FindPhone.h"
-#include "app/my_app/my_app.h"
+#include "app/calculator/calculator.h"
 
 TTGOClass *ttgo = TTGOClass::getWatch();
 
@@ -107,7 +107,7 @@ void setup()
     fxrates_app_setup();
     powermeter_app_setup();
 	FindPhone_setup();
-    my_app_setup();
+    calculator_setup();
     
   	/*
      *

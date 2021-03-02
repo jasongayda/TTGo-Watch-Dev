@@ -1,7 +1,7 @@
 /****************************************************************************
- *   Aug 3 12:17:11 2020
- *   Copyright  2020  Dirk Brosswick
- *   Email: dirk.brosswick@googlemail.com
+ *   03/02/2021
+ *   Copyright  2021 Jason Gayda
+ *   Email: jason.gayda@gmail.com
  ****************************************************************************/
  
 /*
@@ -19,11 +19,16 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
  */
-#ifndef _MY_APP_SETTINGS_H
-    #define _MY_APP_SETTINGS_H
+#ifndef _CALCULATOR_H
+    #define _CALCULATOR_H
 
     #include <TTGO.h>
 
-    void settings_setup(uint32_t tile_num);
+//  #define CALCULATOR_WIDGET    // uncomment if a widget is needed
 
-#endif // _MY_APP_SETTINGS_H
+    void calculator_setup(void);
+
+    uint32_t get_app_setup_tile_num(void);
+    uint32_t get_app_main_tile_num(void);
+
+#endif

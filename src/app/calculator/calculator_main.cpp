@@ -1,7 +1,7 @@
 /****************************************************************************
- *   Aug 3 12:17:11 2020
- *   Copyright  2020  Dirk Brosswick
- *   Email: dirk.brosswick@googlemail.com
+ *   03/02/2021
+ *   Copyright  2021 Jason Gayda
+ *   Email: jason.gayda@gmail.com
  ****************************************************************************/
  
 /*
@@ -22,8 +22,8 @@
 #include "config.h"
 #include <TTGO.h>
 
-#include "my_app.h"
-#include "my_app_main.h"
+#include "calculator.h"
+#include "calculator_main.h"
 
 #include "gui/mainbar/app_tile/app_tile.h"
 #include "gui/mainbar/main_tile/main_tile.h"
@@ -31,10 +31,10 @@
 #include "gui/statusbar.h"
 
 
-lv_obj_t *my_app_main_tile = NULL;
+lv_obj_t *calculator_main_tile = NULL;
 lv_obj_t *txtCalcDisplay = NULL;
 
-lv_style_t my_app_main_style;
+lv_style_t calculator_main_style;
 
 lv_task_t *_app_task;
 
@@ -43,11 +43,9 @@ LV_IMG_DECLARE(setup_32px);
 LV_IMG_DECLARE(refresh_32px);
 LV_FONT_DECLARE(Ubuntu_72px);
 
-//static void exit_example_app_main_event_cb(lv_obj_t * obj, lv_event_t event);
-static void my_app_onExit(lv_obj_t * obj, lv_event_t event);
+static void calculator_onExit(lv_obj_t * obj, lv_event_t event);
 
-//static void enter_example_app_setup_event_cb(lv_obj_t * obj, lv_event_t event);
-static void my_app_setup_onEnter(lv_obj_t * obj, lv_event_t event);
+static void calculator_setup_onEnter(lv_obj_t * obj, lv_event_t event);
 
 static void win_close_event_cb(lv_obj_t * obj, lv_event_t event);
 
@@ -58,12 +56,12 @@ void app_task(lv_task_t * task);
 
 void main_setup(uint32_t tile_num) 
 {
-    my_app_main_tile = mainbar_get_tile_obj(tile_num);
-    lv_style_copy(&my_app_main_style, mainbar_get_style());
+    calculator_main_tile = mainbar_get_tile_obj(tile_num);
+    lv_style_copy(&calculator_main_style, mainbar_get_style());
 
 
     // WINDOW CONTROL
-    lv_obj_t *win = lv_win_create(my_app_main_tile, NULL);
+    lv_obj_t *win = lv_win_create(calculator_main_tile, NULL);
     lv_obj_set_pos(win, 0, 0);
     lv_win_set_header_height(win, HEADER_HEIGHT);
     lv_win_set_title(win, "Calculator");
@@ -700,7 +698,6 @@ static void calc_button_clicked(lv_obj_t * obj, lv_event_t event)
         const char *mystring = "";
         mystring = lv_label_get_text(label);
 
-        //lv_label_set_text_fmt(label, "Button: %d", cnt);
         printf("Clicked By %s\n", mystring);
         lv_textarea_set_text(txtCalcDisplay, mystring);
     }
@@ -720,7 +717,7 @@ static void win_close_event_cb(lv_obj_t * obj, lv_event_t event)
 
 
 
-/*static void my_app_setup_onEnter(lv_obj_t * obj, lv_event_t event) 
+/*static void calculator_setup_onEnter(lv_obj_t * obj, lv_event_t event) 
 {
     switch( event ) 
     {
@@ -732,7 +729,7 @@ static void win_close_event_cb(lv_obj_t * obj, lv_event_t event)
 }*/
 
 
-/*static void my_app_onExit(lv_obj_t * obj, lv_event_t event) 
+/*static void calculator_onExit(lv_obj_t * obj, lv_event_t event) 
 {
     switch(event) 
     {
